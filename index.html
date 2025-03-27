@@ -921,7 +921,7 @@
         event.preventDefault();
     
         // Create a FormData object to gather all form data
-        const formData = new FormData(this);
+        const formData = new FormData(document.getElementById('surveyForm'));
         const formValues = {};
     
         // Iterate over the FormData entries and store them in an object
