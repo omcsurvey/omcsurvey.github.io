@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hepatitis-B Research Survey</title>
+    <style>
+        /* Global styles and reset */
+        * {
+          box-sizing: border-box;
+        }
+        body, html {
+          margin: 0;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+          background: #f5f5f5;
+          color: #333;
+        }
+        /* Container & Card */
+        .container {
+          max-width: 800px;
+          margin: 20px auto;
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          overflow: hidden;
+        }
+        header, footer {
+          background: linear-gradient(90deg, #1e3c72, #2a5298);
+          color: #fff;
+          padding: 20px;
+          text-align: center;
+        }
+        /* Progress Bar */
+        .progress-bar {
+          height: 5px;
+          background: #e0e0e0;
+        }
+        .progress {
+          height: 5px;
+          background: linear-gradient(90deg, #1e3c72, #2a5298);
+          width: 0%;
+          transition: width 0.3s ease-in-out;
+        }
+        /* Form Steps */
+        form section {
+          padding: 20px;
+          display: none;
+          animation: fadeIn 0.5s ease;
+        }
+        form section.active {
+          display: block;
+        }
+        /* Step indicator */
+        .step-indicator {
+          text-align: center;
+          margin-bottom: 20px;
+          font-size: 1.1em;
+          color: #666;
+        }
+        /* Questions & inputs */
+        .question {
+          margin-bottom: 15px;
+        }
+        .question label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          font-size: 1em;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+          margin-right: 5px;
+        }
+        /* Button styling */
+        .btn-container {
+          text-align: right;
+          margin-top: 20px;
+        }
+        button {
+          background: #2a5298;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 10px;
+          font-size: 1em;
+          transition: background 0.3s ease;
+        }
+        button:hover {
+          background: #1e3c72;
+        }
+        /* Fade in animation */
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+          .btn-container {
+            text-align: center;
+          }
+          button {
+            margin: 10px 5px;
+            width: 45%;
+          }
+        }
+    </style>
+    <script src="sa.js"></script>
+    <script src="cm.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Hepatitis-B Research Survey</h1>
+            <p>Student Research Initiative - Community Medicine</p>
+        </header>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <form id="surveyForm">
+            <!-- Step 1: Informed Consent -->
+            <section class="active" data-step="1">
+                <div class="step-indicator">Step 1 of 7</div>
+                <div class="question">
+                    <p><strong>Consent Statement</strong>
+                        <br> “I hereby consent to participate in this survey voluntarily. I understand that my responses will be anonymized and used solely for academic research. I am aware that I may withdraw at any time without penalty.”</p>
+                    <label>
+                        <input type="radio" name="c" value="y" required> Yes, I consent
+                    </label>
+                    <label>
+                        <input type="radio" name="c" value="n" required> No, I do not consent
+                    </label>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 2: Demographic and Academic Details -->
+            <section data-step="2">
+                <div class="step-indicator">Step 2 of 7</div>
+                <div class="question">
+                    <label for="age">1. Age (years):</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="question">
+                    <label>2. Gender Identity:</label>
+                    <label>
+                        <input type="radio" name="gen" value="m" required> Male</label>
+                    <label>
+                        <input type="radio" name="gen" value="f"> Female</label>
+                </div>
+                <div class="question">
+                    <label>3. Current Academic Status:</label>
+                    <label>
+                        <input type="radio" name="aca" value="1" required>1st Year</label>
+                    <label>
+                        <input type="radio" name="aca" value="2"> 2nd Year</label>
+                    <label>
+                        <input type="radio" name="aca" value="3"> 3rd Year</label>
+                    <label>
+                        <input type="radio" name="aca" value="4"> 4th Year</label>
+                    <label>
+                        <input type="radio" name="aca" value="5">Internship</label>
+                </div>
+                <div class="question">
+                    <label>4. Medical Program:</label>
+                    <label>
+                        <input type="radio" name="pro" value="mbbs" required> MBBS</label>
+                    <label>
+                        <input type="radio" name="pro" value="bds"> BDS (Dentistry)</label>
+                </div>
+                <div class="question">
+                    <label for="ins">5. Institution Name:</label>
+                    <select name="ins" id="institution" required>
+                        <option value="OMCH">OSMANIA MEDICAL COLLEGE, HYDERABAD</option>
+                        <option value="GAND">GANDHI MEDICAL COLLEGE, SECUNDERABAD</option>
+                        <option value="KKTI">KAKATIYA MEDICAL COLLEGE, WARANGAL</option>
+                        <option value="RADL">RAJIV INSTITUTE OF MEDICAL SCIENCE, ADILABAD</option>
+                        <option value="GVNZ">GOVT MEDICAL COLLEGE, NIZAMABAD</option>
+                        <option value="GMCM">GOVT MEDICAL COLLEGE, MAHABUBNAGAR</option>
+                        <option value="ESIM">ESI MEDICAL COLLEGE, SANATHNAGAR, HYD</option>
+                        <option value="SGMC">GOVT MEDICAL COLLEGE, SIDDIPET</option>
+                        <option value="GMSR">GOVT MEDICAL COLLEGE, SURYAPET</option>
+                        <option value="GMNL">GOVT MEDICAL COLLEGE, NALGONDA</option>
+                        <option value="GMBK">GOVT MEDICAL COLLEGE, BHADRADRI KOTHAGUDEM</option>
+                        <option value="GMHB">GOVT MEDICAL COLLEGE, MAHABUBABAD</option>
+                        <option value="SIMS">SINGARENI INSTITUTE OF MEDICAL SCIENCES, RAMAGUNDAM</option>
+                        <option value="GWNP">GOVT MEDICAL COLLEGE, WANAPARTHY</option>
+                        <option value="GNGK">GOVT MEDICAL COLLEGE, NAGARKURNOOL</option>
+                        <option value="GSGR">GOVT MEDICAL COLLEGE, SANGAREDDY</option>
+                        <option value="GJTL">GOVT MEDICAL COLLEGE, JAGITYAL</option>
+                        <option value="GMCL">GOVT MEDICAL COLLEGE, MANCHERIAL</option>
+                        <option value="GJGN">GOVT MEDICAL COLLEGE, JANGAON</option>
+                        <option value="GJBP">GOVT MEDICAL COLLEGE, JAYASHANKAR BHUPALPALLY</option>
+                        <option value="GKMR">GOVT MEDICAL COLLEGE, KAMAREDDY</option>
+                        <option value="GKRM">GOVT MEDICAL COLLEGE, KARIMNAGAR</option>
+                        <option value="GKHM">GOVT MEDICAL COLLEGE, KHAMMAM</option>
+                        <option value="GASF">GOVT MEDICAL COLLEGE, KUMURAM BHEEM ASIFABAD</option>
+                        <option value="GNRM">GOVT MEDICAL COLLEGE, NIRMAL</option>
+                        <option value="GSRC">GOVT MEDICAL COLLEGE, RAJANNA SIRCILLA</option>
+                        <option value="GVKB">GOVT MEDICAL COLLEGE, VIKARABAD</option>
+                        <option value="APLO">APOLLO INSTITUTE OF MEDICAL SCIENCES AND RESEARCH, HYD</option>
+                        <option value="KMHD">KAMINENI ACADEMY OF MED SCI AND RESEARCH, HYD</option>
+                        <option value="MAMS">MAMATA ACADEMY OF MED SCI, BACHUPALLY</option>
+                        <option value="MMTA">MAMATA MEDICAL COLLEGE, KHAMMAM</option>
+                        <option value="CARK">C ANANDA RAO IINSTITUTE OF MEDICAL SCIENCES, KARIMNAGAR</option>
+                        <option value="PRTM">PRATHIMA INSTITUTE OF MEDICAL SCIENCES, KARIMNAGAR</option>
+                        <option value="PRIW">PRATIMA RELIEF INSTITUTE OF MEDICAL SCIENCES, WARANGAL</option>
+                        <option value="SVSM">S.V.S. MEDICAL COLLEGE, MAHABUBNAGAR</option>
+                        <option value="MAHE">MAHESHWARA MEDICAL COLLEGE, PATANCHERU, MEDAK</option>
+                        <option value="MNRS">MNR MEDICAL COLLEGE, SANGAREDDY</option>
+                        <option value="RVMC">RVM MEDICAL COLLEGE, MULUGU</option>
+                        <option value="SURB">SURABHI INSTITUTE OF MEDICAL SCIENCES, SIDDIPET</option>
+                        <option value="TRRM">TRR INSTITUTE OF MEDICAL SCIENCES, INOLE, PATANCHERU</option>
+                        <option value="KMNI">KAMINENI INSTITUTE OF MEDICAL SCIENCES., NARKETPALLY</option>
+                        <option value="BASK">BHASKAR MEDICAL COLLEGE, MOINABAD, RR</option>
+                        <option value="DPMR">DR PATNAM MAHENDER REDDY INST OF MED SCI, CHEVELLA</option>
+                        <option value="MHVR">MAHAVIR INSTITUTE OF MEDICAL SCIENCES, VIKARABAD</option>
+                        <option value="MLRD">MALLA REDDY INSTITUTE OF MEDICAL SCIENCE, SURARAM</option>
+                        <option value="MRWN">MALLA REDDY MEDICAL COLLEGE FOR WOMEN,SURARAM</option>
+                        <option value="MEDI">MEDICITY INSTITUTE OF MEDICAL SCIENCES</option>
+                        <option value="CMRM">CMR INSTITUTE OF MEDICAL SCIENCES, KANDALKOYA, MEDCHAL</option>
+                        <option value="FCIM">FATHER COLOMBO INSTITUTE OF MEDICAL SCIENCES, WARANGAL</option>
+                        <option value="AIMD">ARUNDATHI INSTITUTE OF MEDICAL SCIENCES, DUNDIGAL</option>
+                        <option value="DCMS">DECCAN COLLEGE OF MEDICAL SCIENCES</option>
+                        <option value="SHDN">SHADAN INSTITUTE OF MEDICAL SCIENCES</option>
+                        <option value="AYAN">AYAAN INSTITUTE OF MEDICAL SCIENCES</option>
+                        <option value="VRKW">DR V R K WOMENS MEDICAL COLLEGE</option>
+
+                        <option value="AMCV">Andhra Medical College, Vishakhapatnam</option>
+                        <option value="GMCE">Government Medical College, Eluru</option>
+                        <option value="GMCG">Guntur Medical College, Guntur</option>
+                        <option value="GMCM">Government Medical College, Machilipatnam</option>
+                        <option value="GMCO">Government Medical College, Ongole</option>
+                        <option value="GMCR">Government Medical College, Rajahmundry</option>
+                        <option value="GMCS">Government Medical College, Srikakulam</option>
+                        <option value="GMCV">Government Medical College, Vizianagaram</option>
+                        <option value="RMCK">Rangaraya Medical College, Kakinada</option>
+                        <option value="GMCP">Government Medical College, Paderu</option>
+                        <option value="ASRA">Alluri Seetharama Raju Academy of Medical Sciences, Eluru</option>
+                        <option value="GEMS">Great Eastern Medical School and Hospital, Srikakulam</option>
+                        <option value="GSLR">GSL Medical College, Rajahmundry</option>
+                        <option value="GVPT">Gayatri Vidya Parishad Inst. of Health Care and Medical Technology, Visakhapatnam</option>
+                        <option value="KATR">Katuri Medical College and Hospital, Guntur</option>
+                        <option value="KONA">Konaseema Institute of Medical Sciences and Research Foundation</option>
+                        <option value="MAHA">Maharaja Institute of Medical Sciences, Vizianagaram</option>
+                        <option value="NIMR">Nimra Institute of Medical Sciences, Vijayawada</option>
+                        <option value="NRIM">NRI Medical College, Chinnakanki</option>
+                        <option value="NRVP">NRI Institute of Medical Sciences, Visakhapatnam</option>
+                        <option value="PSIM">Dr. Pinnamaneni Siddhartha Institute of Medical Sciences, Gannavaram</option>
+                        <option value="ACSR">ACSR Government Medical College, Nellore</option>
+                        <option value="GMCA">Government Medical College, Anantapur</option>
+                        <option value="GMCK">Government Medical College, Kadapa</option>
+                        <option value="GMCN">Government Medical College, Nandyal</option>
+                        <option value="KMCK">Kurnool Medical College, Kurnool</option>
+                        <option value="PADT">Sri Padmavathi Medical College for Women, Tirupati (under SVIMS)</option>
+                        <option value="SVMC">Sri Venkateswara Medical College, Tirupati</option>
+                        <option value="APLC">Apollo Institute of Medical Sciences and Research, Chittoor</option>
+                        <option value="BMCT">Sri Balaji Medical College Hospital & Research Institute, Renigunta, Tirupati</option>
+                        <option value="FIMS">Fathima Institute of Medical Sciences, Kadapa</option>
+                        <option value="NARN">Narayana Medical College, Nellore</option>
+                        <option value="PESK">P.E.S. Institute of Medical Sciences and Research, Kuppam</option>
+                        <option value="SRMC">Santhiram Medical College, Nandyal</option>
+                        <option value="VMCK">Viswabharathi Medical College, Kurnool</option>
+                        <option value="SMCV">Siddhartha Medical College, Vijayawada</option>
+
+                        <option value="GDHD">Govt Dental College And Hospital, Hyderabad</option>
+                        <option value="ACDS">Army College Of Dental Sciences, Secunderabad</option>
+                        <option value="PANH">Panineeya Maha Vidyalaya Inst Of Dental Sci</option>
+                        <option value="MDCK">Mamata Dental College, Khammam</option>
+                        <option value="MIDS">Mamata Institute of Dental Sciences, Bachupally, Hyderabad.</option>
+                        <option value="SVSD">SVS Dental College, Mahabubnagar</option>
+                        <option value="MNRD">M.N.R. Dental College, Fasalwadi</option>
+                        <option value="KIDS">Kamineni Inst Of Dental Sci, Narketpally</option>
+                        <option value="MGND">Meghana Inst Of Dental Sci, Nizamabad</option>
+                        <option value="TIDS">Thirumala Academy Of Dental Sciences, Nizamabad</option>
+                        <option value="BLJI">Balaji Dental College, Moinabad</option>
+                        <option value="SSDC">Sri Sai College Of Dental Surgery, Vikarabad</option>
+                    </select>
+                </div>
+                <div class="question">
+                    <label>6. Residential Status:</label>
+                    <label>
+                        <input type="radio" name="rs" value="1" required> On-campus/Hostel</label>
+                    <label>
+                        <input type="radio" name="rs" value="2"> Off-campus/Home</label>
+                </div>
+                <div class="question">
+                    <label>7. Prior Healthcare Exposure (e.g., postings, internships):</label>
+                    <label>
+                        <input type="radio" name="he" value="y" required> Yes</label>
+                    <label>
+                        <input type="radio" name="he" value="n"> No</label>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 3: Knowledge Assessment -->
+            <section data-step="3">
+                <div class="step-indicator">Step 3 of 7</div>
+                <div class="question">
+                    <label>8. Which statement best describes Hepatitis-B virus?</label>
+                    <label>
+                        <input type="radio" name="q1" value="1" required> DNA virus</label>
+                    <label>
+                        <input type="radio" name="q1" value="2"> RNA virus</label>
+                    <label>
+                        <input type="radio" name="q1" value="3"> Retrovirus</label>
+                    <label>
+                        <input type="radio" name="q1" value="4"> Bacteria</label>
+                </div>
+                <div class="question">
+                    <label>9. Identify the serological markers that indicate an acute infection (choose all that apply):</label>
+                    <label>
+                        <input type="checkbox" name="q2_1" value="1"> HBsAg</label>
+                    <label>
+                        <input type="checkbox" name="q2_2" value="2"> HBeAg</label>
+                    <label>
+                        <input type="checkbox" name="q2_3" value="3"> Anti-HBc IgM</label>
+                    <label>
+                        <input type="checkbox" name="q2_4" value="4"> Anti-HBs</label>
+                </div>
+                <div class="question">
+                    <label>10. Modes of Transmission of HBV (Select all that apply):</label>
+                    <label>
+                        <input type="checkbox" name="q3_1" value="1"> Unprotected sexual contact</label>
+                    <label>
+                        <input type="checkbox" name="q3_2" value="2"> Sharing needles/syringes</label>
+                    <label>
+                        <input type="checkbox" name="q3_3" value="3"> Needle-stick injury (occupational exposure)</label>
+                    <label>
+                        <input type="checkbox" name="q3_4" value="4"> Vertical (mother-to-child) transmission</label>
+                    <label>
+                        <input type="checkbox" name="q3_5" value="5"> Blood transfusion (unscreened)</label>
+                    <label>
+                        <input type="checkbox" name="q3_6" value="6"> Sharing personal items (razors, toothbrushes)</label>
+                </div>
+                <div class="question">
+                    <label>11. Do you have Needle-stick Injury Experience?</label>
+                    <label>
+                        <input type="radio" name="q4" value="y" required> Yes</label>
+                    <label>
+                        <input type="radio" name="q4" value="n"> No</label>
+                </div>
+                <div class="question">
+                    <label>12. As a medical student, which of the following do you think can help to prevent infection from needlestick injury? (Select all that apply):</label>
+                    <label>
+                        <input type="checkbox" name="q5_1" value="1"> Wash hands with soap or disinfectant after each clinical procedure</label>
+                    <label>
+                        <input type="checkbox" name="q5_2" value="2"> Recap needle with two hands after use and discard immediately in a sharp-proof container</label>
+                    <label>
+                        <input type="checkbox" name="q5_3" value="3"> Do not recap needle or recap with single hand and discard immediately in a sharp-proof container</label>
+                    <label>
+                        <input type="checkbox" name="q5_4" value="4"> Wear gloves when administering injections to patients</label>
+                </div>
+                <div class="question">
+                    <label>13. What can prevent hepatitis B transmission? (Select all that apply):</label>
+                    <label>
+                        <input type="checkbox" name="q6_1" value="1"> Clean and cook food thoroughly</label>
+                    <label>
+                        <input type="checkbox" name="q6_2" value="2"> Provide hepatitis B vaccination</label>
+                    <label>
+                        <input type="checkbox" name="q6_3" value="3"> Avoid reusing or sharing needles/syringes</label>
+                    <label>
+                        <input type="checkbox" name="q6_4" value="4"> Avoid sharing food and utensils or eating with them</label>
+                    <label>
+                        <input type="checkbox" name="q6_5" value="5"> Use condom</label>
+                </div>
+                <div class="question">
+                    <label>14. What is the recommended vaccination schedule for full immunization against HBV?</label>
+                    <label>
+                        <input type="radio" name="q7" value="1" required> 3 doses at 0, 1, and 6 months</label>
+                    <label>
+                        <input type="radio" name="q7" value="2"> 2 doses with a booster</label>
+                    <label>
+                        <input type="radio" name="q7" value="3"> 4 doses at fixed intervals</label>
+                    <label>
+                        <input type="radio" name="q7" value="4"> Other</label>
+                </div>
+                <div class="question">
+                    <label>15. Which of the following best reflects the current evidence regarding the duration of immunity provided by the HBV vaccine?</label>
+                    <label>
+                        <input type="radio" name="q8" value="1" required> Lifelong protection after full series</label>
+                    <label>
+                        <input type="radio" name="q8" value="2"> Waning immunity requiring boosters</label>
+                    <label>
+                        <input type="radio" name="q8" value="3"> Temporary protection (&lt;5 years)</label>
+                    <label>
+                        <input type="radio" name="q8" value="4"> Unsure</label>
+                </div>
+                <div class="question">
+                    <label>16. What is the recommended strategy for individuals who fail to develop adequate antibody titers post-vaccination?</label>
+                    <label>
+                        <input type="radio" name="q9" value="1" required> No additional measures needed</label>
+                    <label>
+                        <input type="radio" name="q9" value="2"> Administer additional vaccine doses and re-test</label>
+                    <label>
+                        <input type="radio" name="q9" value="3"> Initiate antiviral therapy</label>
+                    <label>
+                        <input type="radio" name="q9" value="4"> Monitor antibody levels periodically</label>
+                </div>
+                <div class="question">
+                    <label>17. Which single test would you order to know if a patient has immunity to hepatitis B?</label>
+                    <label>
+                        <input type="radio" name="q10" value="1" required> HBsAg</label>
+                    <label>
+                        <input type="radio" name="q10" value="2"> Anti-HBs</label>
+                    <label>
+                        <input type="radio" name="q10" value="3"> Anti-HBc</label>
+                    <label>
+                        <input type="radio" name="q10" value="4"> Anti-HBe</label>
+                    <label>
+                        <input type="radio" name="q10" value="5"> HBeAg</label>
+                </div>
+                <div class="question">
+                    <label>18. In your opinion, which of the following patient groups would you order hepatitis B screening test even if they have normal levels of AST / ALT in liver, or don’t have hepatic symptoms?</label>
+                    <label>
+                        <input type="checkbox" name="q11_1" value="1"> Pregnant women</label>
+                    <label>
+                        <input type="checkbox" name="q11_2" value="2"> Persons with HIV</label>
+                    <label>
+                        <input type="checkbox" name="q11_3" value="3"> Homosexuals</label>
+                    <label>
+                        <input type="checkbox" name="q11_4" value="4"> Family members of hepatitis B patients</label>
+                </div>
+                <div class="question">
+                    <label>19. Which of the following statements is true about HBV treatment?</label>
+                    <label>
+                        <input type="radio" name="q12" value="1" required> HBV is curable</label>
+                    <label>
+                        <input type="radio" name="q12" value="2"> No cure, but medications effective to manage and control</label>
+                    <label>
+                        <input type="radio" name="q12" value="3"> There is no treatment available</label>
+                    <label>
+                        <input type="radio" name="q12" value="4"> Don’t know</label>
+                </div>
+                <div class="question">
+                    <label>20. What are the goals of HBV Treatment?</label>
+                    <label>
+                        <input type="checkbox" name="q13_1" value="1"> Inhibition of HBV replication</label>
+                    <label>
+                        <input type="checkbox" name="q13_2" value="2"> Improve life and prevent progression</label>
+                    <label>
+                        <input type="checkbox" name="q13_3" value="3"> Prevent spread of HBV (including mother to child)</label>
+                </div>
+                <div class="question">
+                    <label>21. In your opinion, what are the rules/things in HBV treatment?</label>
+                    <label>
+                        <input type="checkbox" name="q14_1" value="1"> First line drugs are nucleoside analogues (NAs)</label>
+                    <label>
+                        <input type="checkbox" name="q14_2" value="2"> Treatment of HBV with nucleoside analogues (NAs) is long term, or can be for a lifetime</label>
+                    <label>
+                        <input type="checkbox" name="q14_3" value="3"> Patients need to follow / obey the treatment process</label>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 4: Attitudes, Ethics, and Perceptions -->
+            <section data-step="4">
+                <div class="step-indicator">Step 4 of 7</div>
+                <div class="question">
+                    <label>22. HBV vaccination should be mandatory for all medical students and healthcare professionals.</label>
+                    <label>
+                        <input type="radio" name="q15" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q15" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q15" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q15" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q15" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>23. Needle-stick injuries represent a significant risk that justifies strict adherence to HBV vaccination.</label>
+                    <label>
+                        <input type="radio" name="q16" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q16" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q16" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q16" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q16" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>24. It is an ethical duty of institutions to ensure their students receive accurate information and easy access to HBV vaccination.</label>
+                    <label>
+                        <input type="radio" name="q17" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q17" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q17" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q17" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q17" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>25. I feel personally responsible for protecting myself and my patients by getting fully vaccinated.</label>
+                    <label>
+                        <input type="radio" name="q18" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q18" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q18" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q18" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q18" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>26. Misunderstandings about HBV transmission and prevention negatively affect vaccination uptake.</label>
+                    <label>
+                        <input type="radio" name="q19" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q19" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q19" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q19" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q19" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>27. I am confident in the safety and efficacy of the HBV vaccine.</label>
+                    <label>
+                        <input type="radio" name="q20" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q20" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q20" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q20" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q20" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>28. My decision to vaccinate has been influenced by discussions and recommendations among my peers and mentors.</label>
+                    <label>
+                        <input type="radio" name="q21" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q21" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q21" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q21" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q21" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>29. I consider my knowledge of HBV and its prevention to be up-to-date and sufficient.</label>
+                    <label>
+                        <input type="radio" name="q22" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q22" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q22" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q22" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q22" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="question">
+                    <label>30. There are ethical challenges in balancing personal beliefs with professional vaccination mandates.</label>
+                    <label>
+                        <input type="radio" name="q23" value="sa" required> Strongly Agree</label>
+                    <label>
+                        <input type="radio" name="q23" value="a"> Agree</label>
+                    <label>
+                        <input type="radio" name="q23" value="ne"> Neutral</label>
+                    <label>
+                        <input type="radio" name="q23" value="d"> Disagree</label>
+                    <label>
+                        <input type="radio" name="q23" value="sd"> Strongly Disagree</label>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 5: Vaccination Details -->
+            <section data-step="5">
+                <div class="step-indicator">Step 5 of 7</div>
+                <div class="question">
+                    <label>31. Have you been vaccinated against HBV?</label>
+                    <label>
+                        <input type="radio" name="q24" value="y" required> Yes</label>
+                    <label>
+                        <input type="radio" name="q24" value="n" required> No</label>
+                </div>
+                <div id="vaccinatedSection" style="display: none;">
+                    <h3>For Vaccinated Respondents:</h3>
+                    <div class="question">
+                        <label>32. Number of Doses Received:</label>
+                        <label>
+                            <input type="radio" name="q25" value="1"> 1 dose</label>
+                        <label>
+                            <input type="radio" name="q25" value="2"> 2 doses</label>
+                        <label>
+                            <input type="radio" name="q25" value="3"> 3 doses (Full series)</label>
+                        <label>
+                            <input type="radio" name="q25" value="b"> Booster dose(s) administered</label>
+                    </div>
+                    <div class="question">
+                        <label>33. Describe dates of vaccination:</label>
+                    </div>
+                    <div class="question">
+                        <label for="d1">Dose 1 (MM/YYYY):</label>
+                        <input type="text" id="dose1" name="d1" placeholder="MM/YYYY">
+                    </div>
+                    <div class="question">
+                        <label for="d2">Dose 2 (MM/YYYY):</label>
+                        <input type="text" id="dose2" name="d2" placeholder="MM/YYYY">
+                    </div>
+                    <div class="question">
+                        <label for="d3">Dose 3 (MM/YYYY):</label>
+                        <input type="text" id="dose3" name="d3" placeholder="MM/YYYY">
+                    </div>
+                    <div class="question">
+                        <label for="bdate">Booster (if applicable, MM/YYYY):</label>
+                        <input type="text" id="boosterDate" name="bdate" placeholder="MM/YYYY">
+                    </div>
+                    <div class="question">
+                        <label>34. Series Completion:</label>
+                        <label>
+                            <input type="radio" name="q26" value="y"> Yes, I completed the full series</label>
+                        <label>
+                            <input type="radio" name="q26" value="n"> No, I missed one or more doses</label>
+                        <label>
+                            <input type="radio" name="q26" value="u"> Unsure</label>
+                    </div>
+                    <div class="question">
+                        <label>35. Post-Vaccination Testing: Have you had your anti-HBs titers checked?</label>
+                        <label>
+                            <input type="radio" name="q27" value="y"> Yes</label>
+                        <label>
+                            <input type="radio" name="q27" value="n"> No</label>
+                        <label>
+                            <input type="radio" name="q27" value="unsure"> Unsure</label>
+                    </div>
+                    <div class="question">
+                        <label>36. Adverse Events during vaccination:</label>
+                        <label>
+                            <input type="radio" name="q28" value="y"> Yes</label>
+                        <label>
+                            <input type="radio" name="q28" value="n"> No</label>
+                    </div>
+                </div>
+                <div id="nonVaccinatedSection" style="display: none;">
+                    <h3>For Non-Vaccinated/Unsure Respondents:</h3>
+                    <div class="question">
+                        <label>37. Reasons for Non-Vaccination:</label>
+                        <label>
+                            <input type="checkbox" name="q29_1" value="1"> Lack of awareness of vaccine importance</label>
+                        <label>
+                            <input type="checkbox" name="q29_2" value="2"> Concerns about vaccine safety/side effects</label>
+                        <label>
+                            <input type="checkbox" name="q29_3" value="3"> Financial constraints or vaccine unavailability</label>
+                        <label>
+                            <input type="checkbox" name="q29_4" value="4"> Academic/clinical scheduling conflicts</label>
+                        <label>
+                            <input type="checkbox" name="q29_5" value="5"> Negative past experiences with vaccination</label>
+                        <label>
+                            <input type="checkbox" name="q29_6" value="6"> Personal or cultural/religious beliefs</label>
+                    </div>
+                    <div class="question">
+                        <label>38. Future Vaccination Intent:</label>
+                        <label>
+                            <input type="radio" name="q30" value="6m"> Yes, within the next 6 months</label>
+                        <label>
+                            <input type="radio" name="q30" value="u"> Yes, but timing is uncertain</label>
+                        <label>
+                            <input type="radio" name="q30" value="n"> No</label>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 6: Institutional Environment -->
+            <section data-step="6">
+                <div class="step-indicator">Step 6 of 7</div>
+                <div class="question">
+                    <label>39. Does your institution offer HBV vaccination free of cost or at a subsidized rate?</label>
+                    <label>
+                        <input type="radio" name="q31" value="y" required> Yes</label>
+                    <label>
+                        <input type="radio" name="q31" value="n"> No</label>
+                    <label>
+                        <input type="radio" name="q31" value="u"> Unsure</label>
+                </div>
+                <div class="question">
+                    <label>40. Has your institution conducted HBV awareness programs or vaccination drives?</label>
+                    <label>
+                        <input type="radio" name="q32" value="y" required> Yes</label>
+                    <label>
+                        <input type="radio" name="q32" value="n"> No</label>
+                    <label>
+                        <input type="radio" name="q32" value="u"> Not sure</label>
+                </div>
+                <div class="question">
+                    <label>41. Effectiveness of initiatives:</label>
+                    <label>
+                        <input type="radio" name="q32_e" value="ve" required> Very effective</label>
+                    <label>
+                        <input type="radio" name="q32_e" value="me"> Moderately effective</label>
+                    <label>
+                        <input type="radio" name="q32_e" value="ie"> Ineffective</label>
+                    <label>
+                        <input type="radio" name="q32_e" value="na"> Not applicable</label>
+                </div>
+                <div class="question">
+                    <label>42. Have you received formal training on the management of needle-stick injuries and post-exposure prophylaxis?</label>
+                    <label>
+                        <input type="radio" name="q33" value="y"> Yes</label>
+                    <label>
+                        <input type="radio" name="q33" value="n"> No</label>
+                </div>
+                <div class="question">
+                    <label>43. What are the primary systemic barriers to HBV vaccination in your institution? (Select all that apply)</label>
+                    <label>
+                        <input type="checkbox" name="q34_1" value="1"> Limited access to vaccine clinics</label>
+                    <label>
+                        <input type="checkbox" name="q34_2" value="2"> Inconvenient scheduling of vaccination sessions</label>
+                    <label>
+                        <input type="checkbox" name="q34_3" value="3"> Insufficient communication about vaccination programs</label>
+                    <label>
+                        <input type="checkbox" name="q34_4" value="4"> Financial constraints</label>
+                    <label>Other:
+                        <input type="text" name="q34_o">
+                    </label>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 7: Feedback -->
+            <section data-step="7">
+                <div class="step-indicator">Step 7 of 7</div>
+                <div class="question">
+                    <label for="q35">44. Challenges in Vaccination:</label>
+                    <textarea id="q35" name="q35"></textarea>
+                </div>
+                <div class="question">
+                    <label for="q36">45. Misconceptions & Information Gaps:</label>
+                    <textarea id="q36" name="q36"></textarea>
+                </div>
+                <div class="question">
+                    <label for="q37">46. Recommendations for Improvement:</label>
+                    <textarea id="q37" name="q37"></textarea>
+                </div>
+                <div class="question">
+                    <label>47. How would you rate the clarity and comprehensiveness of this survey?</label>
+                    <label>
+                        <input type="radio" name="q38" value="1"> Excellent</label>
+                    <label>
+                        <input type="radio" name="q38" value="2"> Good</label>
+                    <label>
+                        <input type="radio" name="q38" value="3"> Fair</label>
+                    <label>
+                        <input type="radio" name="q38" value="4"> Poor</label>
+                </div>
+                <div class="question">
+                    <label>48. Approximately how long did it take to complete this survey?</label>
+                    <label>
+                        <input type="radio" name="q39" value="1"> Less than 5 minutes</label>
+                    <label>
+                        <input type="radio" name="q39" value="2"> 5–10 minutes</label>
+                    <label>
+                        <input type="radio" name="q39" value="3"> More than 10 minutes</label>
+                </div>
+                <div class="question">
+                    <label for="q40">49. Additional Comments:</label>
+                    <textarea id="q40" name="q40"></textarea>
+                </div>
+                <div class="btn-container">
+                    <button type="button" id="prevBtn">Previous</button>
+                    <button type="submit" id="submitBtn">Submit Survey</button>
+                </div>
+            </section>
+        </form>
+        <footer>
+            <p>Student Research Initiative - Community Medicine</p>
+            <p>Osmania Medical College</p>
+            <p>by Nahid, Subhash, Sruthi and Zulqar_Nayn</p>
+        </footer>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 7;
+        const progress = document.getElementById('progress');
+        const sections = document.querySelectorAll('form#surveyForm > section');
+        
+        // Update the progress bar width
+        function updateProgress() {
+          let percent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progress.style.width = percent + '%';
+        }
+        
+        // Display the current step
+        function showStep(step) {
+          sections.forEach(section => {
+            section.classList.remove('active');
+            if (parseInt(section.getAttribute('data-step')) === step) {
+              section.classList.add('active');
+            }
+          });
+          updateProgress();
+        }
+        
+        // Next button
+        document.addEventListener('click', function(e) {
+    if (e.target.id === 'nextBtn') {
+        // Validate the current step before moving to the next
+        const currentSection = sections[currentStep - 1];
+        const requiredInputs = currentSection.querySelectorAll('[required]');
+        let allFilled = true;
+    
+        // Check each required input
+        requiredInputs.forEach(input => {
+            // For radio buttons, check if any radio in the group is checked
+            if (input.type === 'radio') {
+                const groupName = input.name;
+                const checkedRadio = currentSection.querySelector(`input[name="${groupName}"]:checked`);
+                if (!checkedRadio) {
+                    allFilled = false;
+                    // Optionally, you can set a focus to the first radio button in the group
+                    if (input.offsetParent !== null) { // Ensures it is visible
+                        input.focus();
+                    }
+                }
+            } else if (input.type === 'checkbox') {
+                if (!input.checked) {
+                    allFilled = false;
+                    if (input.offsetParent !== null) { // Ensures it is visible
+                        input.focus();
+                    }
+                }
+            } else if (!input.value) {
+                allFilled = false;
+                if (input.offsetParent !== null) { // Ensures it is visible
+                    input.focus();
+                }
+            }
+        });
+    
+        if (!allFilled) {
+    		input.scrollIntoView();
+    		Swal.fire({title: "Alert!",text: "Please fill all required fields before proceeding.",icon: "info"});
+            return;
+        }
+        // Check consent
+        if (currentStep === 1) {
+            const consent = document.querySelector('input[name="c"]:checked');
+            if (!consent) {
+    			Swal.fire({title: "Oops!",text: "Please select a consent option.",icon: "info"});
+                return;
+            }
+            if (consent.value === "n") {
+    			Swal.fire({title: "Alert!",text: "You have chosen not to participate in the survey. Thank you!",icon: "info"});
+                return;
+            }
+        }
+    
+        currentStep++;
+        if (currentStep > totalSteps) currentStep = totalSteps;
+        showStep(currentStep);
+    }else if (e.target.id === 'prevBtn') {
+            currentStep--;
+            if (currentStep < 1) currentStep = 1;
+            showStep(currentStep);
+          }
+        });
+        
+        // Toggle Vaccination Details based on Q31 answer
+        document.querySelectorAll('input[name="q24"]').forEach(radio => {
+          radio.addEventListener('change', function() {
+            const vaccinatedSection = document.getElementById('vaccinatedSection');
+            const nonVaccinatedSection = document.getElementById('nonVaccinatedSection');
+            if (this.value === "y") {
+              vaccinatedSection.style.display = "block";
+              nonVaccinatedSection.style.display = "none";
+            } else {
+              vaccinatedSection.style.display = "none";
+              nonVaccinatedSection.style.display = "block";
+            }
+          });
+        });
+        
+        // Form submission
+        document.getElementById('surveyForm').addEventListener('submit', function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+    
+        // Create a FormData object to gather all form data
+        const formData = new FormData(this);
+        const formValues = {};
+    
+        // Iterate over the FormData entries and store them in an object
+        for (const [key, value] of formData.entries()) {
+          // For checkboxes, we need to handle multiple selections
+          if (Array.isArray(formValues[key])) {
+            formValues[key].push(value);
+          } else if (formValues[key]) {
+            formValues[key] = [formValues[key], value];
+          } else {
+            formValues[key] = value;
+          }
+        }
+    
+        // Log all the values to the console
+        console.log(formValues);
+    	var dat="", key = "o22";
+    	for (let x in formValues) {
+    	 dat += x+"-"+formValues[x] + ",";
+    	}
+        console.log(dat);
+    	var encrypted = CryptoJS.AES.encrypt(dat, key).toString();
+    	console.log("Encrypted:", encrypted);
+    	var decrypted = CryptoJS.AES.decrypt(encrypted, key).toString(CryptoJS.enc.Utf8);
+    	console.log("Decrypted:", decrypted);// Assuming you have `dat` and `key` defined
+    
+    // Prepare the data to send
+    const data = {
+        encdat: encrypted
+    };
+    var omcsturl = "https://script.google.com/macros/s/AKfycbzY-_MtROc7U8m_s3irVMEqaQQjmjgG44fw6Tbz-43T7pPWe3Q0h0iiYU6i5janYQ3X/exec"
+	var osurl = "https://script.google.com/macros/s/AKfycbzw4Gi-BahIQ5SZUPNs_OrpYbSmqZyC3WGXJjlDklFckWWIoMqlPe3H2mcksrboq1FwKQ/exec"
+	
+	
+	//https://docs.google.com/spreadsheets/d/1aNhorlR-cccxfwca-snMfR_hfUUtjFiTHupxu7_NBoE/edit?usp=sharing
+	//https://docs.google.com/spreadsheets/d/1KNPc1Hd2fbwUQRtAJwfdOioMwF_JvSNLEMec-WSawqM/edit?usp=sharing
+	
+	if (document.getElementById("institution").value == "OMCH"){
+	  var surl = omcsturl;
+	}else{
+	  var surl = osurl;
+	}
+	
+    try {
+        const response = await fetch(, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    
+        // Check if the response is OK
+        if (response.ok) {
+    	Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success"});
+            // Reset your form if needed
+            // form.reset();
+        } else {
+    				Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
+        }
+    } catch (error) {
+    				Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
+    }
+      });
+    </script>
+</body>
+
+</html>
+<!--
+function doPost(e) {
+  // Get the encrypted data from the POST request
+  const data = JSON.parse(e.postData.contents);
+  const encryptedData = data.encdat;
+
+  // Open the active spreadsheet and select the first sheet
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // Append the decrypted data to the sheet (assuming it's a single cell)
+  sheet.appendRow([encryptedData]);
+
+  // Return a success response
+  return ContentService.createTextOutput(JSON.stringify({ result: "Success" })).setMimeType(ContentService.MimeType.JSON);
+}
+
+
+-->
