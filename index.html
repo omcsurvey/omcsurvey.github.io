@@ -131,6 +131,9 @@
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
         </div>
+<div id="thankYouMessage" style="display: none;">
+    Thank you for your submission!
+</div>
         <form id="surveyForm">
             <!-- Step 1: Informed Consent -->
             <section class="active" data-step="1">
@@ -975,6 +978,7 @@
     
         // Check if the response is OK
         if (response) {
+		            localStorage.setItem("formSubmitted", "true");
     	Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success"});
             // Reset your form if needed
             // form.reset();
@@ -985,6 +989,17 @@
     				Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
     }
       });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if the form was already submitted
+        const formSubmitted = localStorage.getItem("formSubmitted");
+        if (formSubmitted) {
+            // If form was submitted, hide the form and show a thank you message
+            document.getElementById("surveyForm").style.display = "none";
+            document.getElementById("progress").style.display = "none";
+            document.getElementById("thankYouMessage").style.display = "block";
+    	    Swal.fire({title: "Form submitted already!",text: "Thank-you for Your Partcipation!",icon: "info"});
+        }   
+    });
     </script>
 </body>
 
