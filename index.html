@@ -121,6 +121,88 @@ input[type="checkbox"] {
   margin-right: 10px; /* Increased spacing */
 }
 
+/* remove default styling. This completely removes the radio buttons */
+input[type="radio"] {
+-webkit-appearance: none;
+appearance: none;
+}
+
+/* Make our own radio button */
+input[type="radio"] {
+/* designs the radio button itself, not the check */
+width: 20px;
+height: 20px;
+border-radius: 50%; /* makes it a circle */
+border: 3px solid blue;
+vertical-align: -5px;
+margin-left: 5px;
+
+/* so that we can use absolute positioning for the custom checkmark */
+position: relative;
+}
+
+/* designing the "check" */
+input[type="radio"]::before {
+content: " ";
+position: absolute;
+background-color: red;
+transform: scale(0); /* no checkmark unless button is toggled */
+
+/* a checked button shows a 10px circle inside it */
+width: 10px;
+height: 10px;
+border-radius: 50px;
+
+top: 2px;
+left: 2px;
+}
+
+input[type="radio"]:checked::before {
+transform: scale(1); /* make checkmark appear */
+}
+
+/* Remove default checkbox styling */
+input[type="checkbox"] {
+-webkit-appearance: none;
+appearance: none;
+}
+
+/* Base checkbox styling */
+input[type="checkbox"] {
+width: 20px;
+height: 20px;
+border: 3px solid blue;
+border-radius: 5px; /* Slightly rounded corners */
+position: relative;
+cursor: pointer;
+vertical-align: middle;
+transition: border-color 0.2s;
+}
+
+/* Create the checkmark */
+input[type="checkbox"]::before {
+content: "✓";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(0);
+color: green;
+font-size: 20px;
+font-weight: bold;
+transition: transform 0.2s;
+}
+
+/* Show checkmark when checked */
+input[type="checkbox"]:checked::before {
+transform: translate(-50%, -50%) scale(1);
+}
+
+/* Optional: Add a hover effect */
+input[type="checkbox"]:hover {
+border-color: darkblue;
+}
+
+
 /* Button styling */
 .btn-container {
   text-align: right; /* Align buttons to the right */
