@@ -922,6 +922,7 @@
         document.getElementById('surveyForm').addEventListener('submit', async (event) => {
         // Prevent the default form submission
         event.preventDefault();
+	document.getElementById("submitBtn").disabled = true;
     
         // Create a FormData object to gather all form data
         const formData = new FormData(document.getElementById('surveyForm'));
@@ -956,7 +957,7 @@
         encdat: encrypted
     };
     var omcsturl = "https://script.google.com/macros/s/AKfycbzY-_MtROc7U8m_s3irVMEqaQQjmjgG44fw6Tbz-43T7pPWe3Q0h0iiYU6i5janYQ3X/exec"
-	var osurl = "https://script.google.com/macros/s/AKfycbzw4Gi-BahIQ5SZUPNs_OrpYbSmqZyC3WGXJjlDklFckWWIoMqlPe3H2mcksrboq1FwKQ/exec"
+    var osurl = "https://script.google.com/macros/s/AKfycbzw4Gi-BahIQ5SZUPNs_OrpYbSmqZyC3WGXJjlDklFckWWIoMqlPe3H2mcksrboq1FwKQ/exec"
 	
 	
 	//https://docs.google.com/spreadsheets/d/1aNhorlR-cccxfwca-snMfR_hfUUtjFiTHupxu7_NBoE/edit?usp=sharing
@@ -978,15 +979,15 @@
     
         // Check if the response is OK
         if (response) {
-		            localStorage.setItem("formSubmitted", "true");
-    	Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success"});
+	    localStorage.setItem("formSubmitted", "true");
+    	    Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success"});
             // Reset your form if needed
-            // form.reset();
+            form.reset();
         } else {
-    				Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
+    	     Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
         }
     } catch (error) {
-    				Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
+    	Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
     }
       });
     document.addEventListener("DOMContentLoaded", function () {
