@@ -6,118 +6,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hepatitis-B Research Survey</title>
     <style>
-        /* Global styles and reset */
-        * {
-          box-sizing: border-box;
-        }
-        body, html {
-          margin: 0;
-          padding: 0;
-          font-family: 'Roboto', sans-serif;
-          background: #f5f5f5;
-          color: #333;
-        }
-        /* Container & Card */
-        .container {
-          max-width: 800px;
-          margin: 20px auto;
-          background: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          overflow: hidden;
-        }
-        header, footer {
-          background: linear-gradient(90deg, #1e3c72, #2a5298);
-          color: #fff;
-          padding: 20px;
-          text-align: center;
-        }
-        /* Progress Bar */
-        .progress-bar {
-          height: 5px;
-          background: #e0e0e0;
-        }
-        .progress {
-          height: 5px;
-          background: linear-gradient(90deg, #1e3c72, #2a5298);
-          width: 0%;
-          transition: width 0.3s ease-in-out;
-        }
-        /* Form Steps */
-        form section {
-          padding: 20px;
-          display: none;
-          animation: fadeIn 0.5s ease;
-        }
+
         form section.active {
           display: block;
         }
-        /* Step indicator */
-        .step-indicator {
-          text-align: center;
-          margin-bottom: 20px;
-          font-size: 1.1em;
-          color: #666;
-        }
-        /* Questions & inputs */
-        .question {
-          margin-bottom: 15px;
-        }
-        .question label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-        }
-        input[type="text"],
-        input[type="number"],
-        textarea,
-        select {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          margin-bottom: 10px;
-          font-size: 1em;
-        }
-        input[type="radio"],
-        input[type="checkbox"] {
-          margin-right: 5px;
-        }
-        /* Button styling */
-        .btn-container {
-          text-align: right;
-          margin-top: 20px;
-        }
-        button {
-          background: #2a5298;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
-          margin-left: 10px;
-          font-size: 1em;
-          transition: background 0.3s ease;
-        }
-        button:hover {
-          background: #1e3c72;
-        }
-        /* Fade in animation */
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-          .btn-container {
-            text-align: center;
-          }
-          button {
-            margin: 10px 5px;
-            width: 45%;
-          }
-        }
-    </style>
+
+/* Global styles and reset */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif; /* Clean and modern font */
+  background: linear-gradient(120deg, #f0f4c3, #e1f5fe); /* Soft gradient background */
+  color: #333;
+}
+
+/* Container & Card */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #ffffff; /* White background for form */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  overflow: hidden;
+  border: 1px solid #e0e0e0; /* Light border */
+}
+
+/* Header & Footer */
+header, footer {
+  background: linear-gradient(90deg, #4a148c, #8e24aa); /* Vibrant gradient */
+  color: #ffffff;
+  padding: 30px; /* Ample padding for a spacious feel */
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em; /* Prominent title font */
+  margin: 0;
+}
+
+footer p {
+  margin: 5px 0; /* Tightened spacing */
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 8px; /* Consistent height */
+  background: #e0e0e0;
+  margin-top: 5px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4a148c, #8e24aa); /* Consistent theme */
+  width: 0%;
+  transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Form Steps */
+form section {
+  padding: 30px; /* Consistent padding */
+  display: none; /* Hides non-active sections */
+  animation: fadeIn 0.5s ease; /* Fade-in effect */
+}
+
+form section.active {
+  display: block; /* Shows active section */
+}
+
+/* Step indicator */
+.step-indicator {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em; /* Enhanced size for clarity */
+  color: #4a148c; /* Consistent color theme */
+}
+
+/* Questions & inputs */
+.question {
+  margin-bottom: 25px; /* Increased spacing */
+}
+
+.question label {
+  display: block;
+  margin-bottom: 10px; /* Increased spacing */
+  font-weight: bold; /* Bolder labels */
+  font-size: 1.1em; /* Increased font size */
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%; /* Full-width inputs */
+  padding: 15px; /* Ample padding */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 10px; /* Rounded edges */
+  margin-bottom: 15px; /* Increased spacing */
+  font-size: 1em; /* Base font size */
+  transition: border 0.3s; /* Smooth border transition */
+}
+
+input:focus {
+  border-color: #8e24aa; /* Focus color for all inputs */
+  outline: none; /* Remove default outline */
+}
+
+/* Radio and Checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px; /* Increased spacing */
+}
+
+/* Button styling */
+.btn-container {
+  text-align: right; /* Align buttons to the right */
+  margin-top: 30px; /* Increased margin */
+}
+
+button {
+  background: #4a148c; /* Base button color */
+  color: #ffffff;
+  border: none; /* No border */
+  padding: 12px 25px; /* Ample padding */
+  border-radius: 10px; /* Rounded edges */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 15px; /* Increased spacing */
+  font-size: 1.1em; /* Slightly larger text */
+  transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+button:hover {
+  background: #8e24aa; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .btn-container {
+    text-align: center; /* Center buttons on small screens */
+  }
+  
+  button {
+    margin: 10px 5px; /* Adjust margins for small screens */
+    width: 100%; /* Full width buttons on small screens */
+  }
+}    </style>
     <script src="sa.js"></script>
     <script src="cm.js"></script>
 </head>
