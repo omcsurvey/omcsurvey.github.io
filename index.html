@@ -1048,6 +1048,7 @@ button:hover {
         // Prevent the default form submission
         event.preventDefault();
 	document.getElementById("submitBtn").disabled = true;
+	Swal.fire({title: "Please wait!",text: "Submitting response!",icon: "info", allowOutsideClick: false});
     
         // Create a FormData object to gather all form data
         const formData = new FormData(document.getElementById('surveyForm'));
@@ -1105,11 +1106,16 @@ button:hover {
         // Check if the response is OK
         if (response) {
 	    localStorage.setItem("formSubmitted", "true");
-    	    Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success"});
+	    Swal.close();
+    	    Swal.fire({title: "Form submitted!",text: "Thank-you for Your Partcipation!",icon: "success", allowOutsideClick: false});
+	    document.getElementById("surveyForm").style.display = "none";
+	    document.getElementById("thankYouMessage").style.display = "block";
         } else {
+	     Swal.close();
     	     Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
         }
     } catch (error) {
+	Swal.close();
     	Swal.fire({title: "Oops!",text: "Something went wrong!",icon: "error"});
     }
       });
