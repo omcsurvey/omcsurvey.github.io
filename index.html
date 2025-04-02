@@ -316,6 +316,7 @@ button:hover {
                     <label for="ins">5. Institution Name:</label>
                     <select name="ins" id="institution" required>
                         <option value="OMCH">OSMANIA MEDICAL COLLEGE, HYDERABAD</option>
+			<option value="__OTHER__">Other</option>
                         <option value="GAND">GANDHI MEDICAL COLLEGE, SECUNDERABAD</option>
                         <option value="KKTI">KAKATIYA MEDICAL COLLEGE, WARANGAL</option>
                         <option value="RADL">RAJIV INSTITUTE OF MEDICAL SCIENCE, ADILABAD</option>
@@ -420,6 +421,10 @@ button:hover {
                         <option value="BLJI">Balaji Dental College, Moinabad</option>
                         <option value="SSDC">Sri Sai College Of Dental Surgery, Vikarabad</option>
                     </select>
+  <input type="text"  name="custom_institution"
+         id="otherInstitution" 
+         style="display: none; margin-left: 10px;"
+         placeholder="Enter institution name">
                 </div>
                 <div class="question">
                     <label>6. Residential Status:</label>
@@ -1130,6 +1135,24 @@ button:hover {
     	    Swal.fire({title: "Form submitted already!",text: "Thank-you for Your Partcipation!",icon: "info"});
         }   
     });
+
+  const institutionSelect = document.getElementById('institution');
+  const otherInput = document.getElementById('otherInstitution');
+
+  institutionSelect.addEventListener('change', function() {
+    if (this.value === '__OTHER__') {
+      otherInput.style.display = 'block';
+      otherInput.focus();
+    } else {
+      otherInput.style.display = 'none';
+      otherInput.value = '';
+    }
+  });
+
+  otherInput.addEventListener('input', function() {
+    institutionSelect.value = '__OTHER__';
+  });
+
     </script>
 </body>
 
