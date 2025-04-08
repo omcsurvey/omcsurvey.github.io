@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hepatitis-B Study Among Medical Students</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        a {
+            color: #2c7be5;
+            text-decoration: none;
+        }
+        
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            z-index: 1000;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: #2c7be5;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #2c7be5;
+            color: white;
+            border-radius: 20px;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        section h2 {
+            color: #2c7be5;
+            border-bottom: 3px solid #2c7be5;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .objective-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .objective-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .objective-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hypothesis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+                background: aliceblue;
+				padding:5px;
+            border-radius: 10px;
+        }
+        
+        .hypothesis-card {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+        }
+        
+        /* Methodology Section */
+        .methodology-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        
+        .step-box {
+            flex: 1 1 30%;
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .step-box i {
+            font-size: 2.5rem;
+            color: #4caf50;
+            margin-bottom: 1rem;
+        }
+		
+.outcome-section {
+    margin-bottom: 2rem;
+}
+.outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+.outcome-card {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.synthesis {
+    background: #fff3e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff9800;
+}
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hypothesis-grid {
+                background: aliceblue;
+				padding:5px;
+                grid-template-columns: 1fr;
+            border-radius: 10px;
+            }
+            
+            .methodology-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hepatitis-B Knowledge, Attitudes, and Vaccination Status Among Medical Students</h1>
+        <p>A Comprehensive Observational Study and Research</p>
+    </header>
+    
+    <nav>
+        <div class="nav-links">
+            <a href="#background">Background</a>
+            <a href="#objectives">Objectives</a>
+            <a href="#hypotheses">Hypotheses</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#expected-results">Outcomes</a>
+            <a href="#ethics">Ethics</a>
+        </div>
+    </nav>
+    
+    <main>
+        <section id="background">
+            <h2>Background</h2>
+            <p>Hepatitis B (HBV) is a significant public health concern worldwide, especially in the developing world, including India. Medical students are at a higher risk due to their encounter with blood and other body fluids during clinical exposure. Although vaccination against HBV has been proven to be the most effective preventive method, there is still room for improvement of its uptake among medical students, which is influenced by their awareness, attitude, and accessibility. The knowledge of these factors is crucial to the development of interventions that can be tailor-made to increase the rate of vaccination.</p>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <h3>Aim</h3>
+                    <p>The present research is aimed at providing a comprehensive evaluation of Indian medical students' knowledge of Hepatitis B, as well as their attitudes toward it, and to determine the impact of these factors on their vaccination status. The purpose of the study is to identify the barriers to vaccination in order to develop evidence-based policies and educational programs to improve the vaccine coverage of future health professionals.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="objectives">
+            <h2>Research Objectives</h2>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <h3>Primary Objective</h3>
+                    <p>To observe the relationship between medical students’ knowledge of Hepatitis-B, their attitudes toward vaccination, and their actual vaccination status? And to find the correlation between it.</p>
+                </div>
+                <div class="objective-item">
+                    <h3>Specific Objectives</h3>
+                    <ul>
+                        <li>Knowledge Assessment</li>
+                        <li>Attitudinal Measures</li>
+                        <li>Vaccination Status Evaluation</li>
+						<li>Influence Of Demography, Knowledge, Personal and other Factors on Vaccination</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="hypotheses">
+            <h2>Research Hypotheses</h2>
+			    <h3>Knowledge and Vaccination:</h3>
+            <div class="hypothesis-grid">
+                <div class="hypothesis-card">
+                    <h3>H1</h3>
+                    <p>Higher knowledge about Hepatitis-B is associated with higher vaccination rates</p>
+                </div>
+                <div class="hypothesis-card">
+                    <h3>H2</h3>
+                    <p>Misunderstandings about hepatitis B transmission and prevention relate to attitudes. Even among well-informed individuals, higher vaccination rates were linked to positive attitudes and greater knowledge.</p>
+                </div>
+            </div>
+			    <h3>Attitudinal Influence:</h3>
+            <div class="hypothesis-grid">
+                <div class="hypothesis-card">
+                    <h3>H3</h3>
+                    <p>Positive vaccine attitudes directly correlate with vaccination status</p>
+                </div>
+                <div class="hypothesis-card">
+                    <h3>H4</h3>
+                    <p>Unwillingness for vaccination due to negative perceptions or individual circumstances is pertinently linked disapproving immunization uptake</p>
+                </div>
+            </div>
+			    <h3>Demographic Variability:</h3>
+            <div class="hypothesis-grid">
+                <div class="hypothesis-card">
+                    <h3>H5</h3>
+                    <p>Clinical-year students have better knowledge and vaccination rates</p>
+                </div>
+                <div class="hypothesis-card">
+                    <h3>H6</h3>
+                    <p>Female medical students may have different attitudes toward vaccination when compared to male peers, influencing uptake</p>
+                </div>
+            </div>
+			    <h3>Barriers to Vaccination:</h3>
+            <div class="hypothesis-grid">
+                <div class="hypothesis-card">
+                    <h3>H7</h3>
+                    <p>Systemic barriers(accessibility) affect vaccination program accessibility</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="methodology">
+            <h2>Methodology</h2>
+            <div class="methodology-steps">
+			    <div class="step-box">
+				  <i class="fas fa-project-diagram"></i>
+				  <h3>Study Design</h3>
+				  <p>Cross-sectional mixed-methods design integrating a <strong>quantitative survey</strong> (structured questionnaire) and <strong>qualitative interviews</strong> to evaluate Knowledge, Attitudes, and Behavior (KAB) dynamics toward Hepatitis-B vaccination.</p>
+				</div>
+                <div class="step-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Study Population</h3>
+                    <p>Medical students from different institutions of India were used in the studies a <strong>Sample size</strong> of approx <strong>384 students</strong> was calculated but we get only <strong>168 response</strong></p>
+                </div>
+                <div class="step-box">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Data Collection</h3>
+                    <p>Structured questionnaire with demographic, knowledge, attitude and status assessments was made using HTML/JS/CSS and was hosted and distributed among medical students of India using social media</p>
+                </div>				
+                <div class="step-box">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Data Analysis</h3>
+                    <p>Descriptive statistics, Visual Charts, correlation analysis, Machine model(ML), and logistic regression using Python and Data science</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sas">
+<iframe 
+  src="ssc.html" 
+  style="border: none; width: 100%; height: 600px;"
+  sandbox="allow-same-origin allow-scripts">
+</iframe>
+        </section>
+		
+<section id="expected-results">
+    <h2>Expected Outcomes</h2>
+    <p>This study anticipates elucidating the complex interplay between Hepatitis-B knowledge, attitudes, and vaccination behavior among medical students. By analyzing demographic, cognitive, and systemic factors, the research aims to identify actionable insights to improve vaccination programs. The expected outcomes are structured below, aligned with the tested hypotheses:</p>
+
+    <!-- Knowledge and Vaccination -->
+    <div class="outcome-section">
+        <h3>Knowledge as a Predictor of Vaccination</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H1 Validation: Confirmed</h4>
+                <p>
+				    Based on the Visual analysis there was found to be good corellation between Knowledge score and Vaccination status.
+                    Althrough Statistical analysis demonstrates a <strong>moderate positive correlation (r = 0.41, p &lt; 0.001)</strong> between Hepatitis-B knowledge scores and vaccination status. Logistic regression showed <strong>Strong corellation</strong> confirms that each 1-point increase in knowledge score raises vaccination odds by <strong>55% (OR = 1.55, p = 0.000)</strong>, validating the hypothesis.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H2 Rejection: Partial Insight</h4>
+                <p>
+				    Visual analysis don't show much difference in graph of Vaccinated and non-Vaccinated students by Misconception count.
+                    Contrary to expectations, misconception counts showed <strong>no significant association (p = 0.106)</strong> with vaccination status. While knowledge remained a strong predictor (p = 0.000), misconceptions alone did not meaningfully influence vaccination decisions.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attitudinal Influence -->
+    <div class="outcome-section">
+        <h3>Attitudinal Determinants of Vaccine Uptake</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H3 Validation: Strong Support</h4>
+                <p>
+				    The Visual analysis(box plot and violin plot) show that mean attitude score was higher for Vaccinated students.
+                    A <strong>statistically significant difference (t = 6.57, p = 5.6×10⁻⁸)</strong> in attitude scores exists between vaccinated and non-vaccinated groups. Logistic regression reveals a <strong>1.56-unit increase in log-odds of vaccination per attitude score point (p = 3.5×10⁻¹⁰)</strong>, confirming attitudes directly drive vaccination behavior.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H4 Rejection: Limited Cultural Impact</h4>
+                <p>
+				    Visual analysis of Cultural barrier among vaccinated ad non-Vaccinated students don't revealed any big changes.
+                    Numerical analysis of Cultural barriers showed <strong>no significant association (p = 0.116)</strong> with vaccination status. While non-vaccinated students reported more cultural concerns, multivariate analysis found these barriers did not independently predict vaccination decisions.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demographic Variability -->
+    <div class="outcome-section">
+        <h3>Demographic Disparities in Vaccination</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H5 Validation: Academic Year Matters</h4>
+                <p>
+				    Althrough the data was highly immbalanced for higher academic years but in Visual analysis it was able to show significant increase in knowedge score as Academic Year increases. And since it was indirectly showing corellation with Vaccination satuseven in immbalanced data.
+                    Numerical analysis revealed a <strong>significant chi-square association (χ² = 53.67, p = 0.000)</strong> exists between academic year and vaccination status. Clinical-year students exhibit higher knowledge scores and vaccination rates, with each academic year increasing vaccination odds by <strong>32% (OR = 1.32, p = 0.001)</strong>.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H6 Rejection: Gender Neutrality</h4>
+                <p>
+				    Visual analysis showed less/no difference between the Male and female Vaccinated and non-Vaccinated students.
+                    No significant gender differences in vaccination rates or attitudes were observed. Both male and female students showed comparable vaccine uptake patterns, suggesting gender is not a determinant in this population.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Systemic Barriers -->
+    <div class="outcome-section">
+        <h3>Structural Barriers to Immunization</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H7 Partial Validation: Accessibility Challenges</h4>
+                <p>
+				    Visual analysis shows that there is significant impact and presence of the Barriers in the Institutions and affect on the Vaccination status.
+                    While financial barriers showed minimal impact(on non-Vaccinated students), Comapared to Vaccinated students who cited <strong>Financial</strong> and <strong>Scheduling </strong> as significant deterrents. Non-vaccinated students disproportionately cited <strong>Communication and Institutional<strong> accessibility as a critical barrier.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Synthesis -->
+    <div class="synthesis">
+        <h3>Implications for Public Health</h3>
+        <p>
+            The findings underscore that <strong>knowledge enhancement programs</strong> and <strong>attitude-focused interventions</strong> should be prioritized for pre-clinical students. Addressing institutional, communication, financial and access barriers could further improve vaccination rates. Contrary to assumptions, cultural beliefs and gender disparities play limited roles in this population.
+        </p>
+    </div>
+</section>
+        
+        <section id="ethics">
+            <h2>Ethics</h2>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <h3>Informed Consent</h3>
+                    <p>Participants will be guaranteed extensive information about research and studies. With right to withdraw</p>
+                </div>
+                <div class="objective-item">
+                    <h3>Confidentiality</h3>
+                    <p>Promises to keep the data secure and encrypted, with which any individual can work without jeopardising privacy or its likelihood of being breached to a third party</p>
+                </div>
+                <div class="objective-item">
+                    <h3>Ethics Approval</h3>
+                    <p>Approval from SPM department and Institutions from where data will be collected</p>
+                </div>
+		    </div>
+		</section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Team of Nahid, Subhash, Sruthi and Zulqar Nayn</p>
+    </footer>
+</body>
+</html>
+
+
+<!--
+
+<section id="expected-results">
+    <h2>Results and Discussion</h2>
+    <p>The study’s analysis yielded robust findings regarding the interplay between knowledge, attitudes, and vaccination status among Indian medical students. The following sections detail the statistical outcomes corresponding to each research hypothesis and provide insights into key demographic parameters.</p>
+
+Consent and Demographic Analysis
+    <div class="outcome-section">
+        <h3>Consent and Demographic Insights</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>Consent Rate Analysis</h4>
+                <p>
+                    The consent rate among respondents was high, with approximately <strong>70% of participants</strong> consenting to join the study. Despite a lower-than-expected sample size (168 responses versus a target of 384), the responses provided a reliable basis for subsequent analysis.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>Age Distribution</h4>
+                <p>
+                    The age distribution indicates that most respondents fall between <strong>20 and 24 years</strong> of age, with a mean age of approximately <strong>22 years</strong>, reflecting the typical demographic of Indian medical students.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    Hypotheses Testing 
+    <div class="outcome-section">
+        <h3>Hypotheses Testing</h3>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H1: Knowledge as a Predictor of Vaccination</h4>
+                <p>
+                    Regression analysis revealed a <strong>moderate positive correlation (r = 0.48, p &lt; 0.001)</strong> between Hepatitis B knowledge scores and vaccination status. Each one-point increase in the knowledge score was associated with a <strong>55% increase in the odds of vaccination (OR = 1.55, p = 0.000)</strong>, thereby validating H1.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H2: Impact of Misconceptions</h4>
+                <p>
+                    Contrary to expectations, the total count of misconceptions did not significantly predict vaccination status (p = 0.106), suggesting that overall knowledge plays a more decisive role than isolated misconceptions.
+                </p>
+            </div>
+        </div>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H3: Attitudinal Influence</h4>
+                <p>
+                    A significant difference in attitude scores was observed between vaccinated and non-vaccinated groups (<strong>t = 6.57, p = 5.6×10⁻⁸</strong>). Logistic regression analysis confirmed that each unit increase in attitude score increased the log-odds of vaccination by <strong>1.56 units (p = 3.5×10⁻¹⁰)</strong>, strongly supporting H3.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H4: Cultural Barriers</h4>
+                <p>
+                    Although cultural concerns were noted among non-vaccinated students, these factors did not independently predict vaccination status (p = 0.116), leading to a rejection of H4 as a primary determinant.
+                </p>
+            </div>
+        </div>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H5: Academic Year Effect</h4>
+                <p>
+                    Chi-square analysis (χ² = 53.67, p = 0.000) confirmed that clinical-year students possessed higher knowledge scores and vaccination rates. Each advancing academic year increased the odds of vaccination by <strong>32% (OR = 1.32, p = 0.001)</strong>, thereby validating H5.
+                </p>
+            </div>
+            <div class="outcome-card">
+                <h4>H6: Gender Comparison</h4>
+                <p>
+                    Analysis revealed no significant differences in vaccination status or attitudes between male and female students (p &gt; 0.05), indicating that gender does not play a determinative role in vaccine uptake among the study cohort.
+                </p>
+            </div>
+        </div>
+        <div class="outcome-grid">
+            <div class="outcome-card">
+                <h4>H7: Systemic Barriers</h4>
+                <p>
+                    Systemic factors such as communication gaps (p = 0.02) and limited accessibility (p = 0.007) were significant determinants of vaccination behavior. These findings underscore the need for institutional improvements to facilitate easier vaccine access.
+                </p>
+            </div>
+        </div>
+    </div>
+
+Synthesis
+    <div class="synthesis">
+        <h3>Synthesis and Public Health Implications</h3>
+        <p>
+            The results highlight the critical influence of enhanced knowledge and positive attitudes on HBV vaccination rates among Indian medical students. Although individual factors like academic progression strongly predict vaccine uptake, systemic barriers such as accessibility issues remain significant. These insights advocate for targeted educational initiatives and improved institutional policies to further promote vaccination among future healthcare professionals.
+        </p>
+    </div>
+</section>
+
+-->
