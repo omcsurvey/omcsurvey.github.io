@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Size & Margin of Error Analysis</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 2rem;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            color: #34a853;
+            border-left: 5px solid #34a853;
+            padding-left: 1rem;
+            margin-top: 2rem;
+        }
+        .formula {
+            background: #f1f3f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+        .highlight {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        .warning-box {
+            background: #fff4e5;
+            border: 1px solid #ff9900;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .steps ol {
+            list-style: decimal inside;
+            padding-left: 1.5rem;
+        }
+        .parameters ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .parameters li {
+            background: #e8f4ff;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 3rem;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sample Size & Margin of Error Analysis</h1>
+        <h3 style="text-align: center; color: #6610f2;">Hepatitis-B KAP Study Among Medical Students in India</h3>
+        
+        <section class="section">
+            <h2>1. Sample Size Calculation</h2>
+            <p>We calculated the required sample size using the following methodology:</p>
+            
+            <div class="parameters">
+                <h3>Key Parameters:</h3>
+                <ul>
+                    <li><strong>Total Population (N):</strong> 560,560 students (112,112/year × 5 years) total number of students doing MBBS in India</li>
+                    <li><strong>Confidence Level:</strong> 95% (Z = 1.96)</li>
+                    <li><strong>Margin of Error (E):</strong> 5%</li>
+                    <li><strong>Expected Proportion (p):</strong> 0.5 (conservative estimate)</li>
+                </ul>
+            </div>
+
+            <div class="formula">
+                <h3>Calculation Formula:</h3>
+                \[
+                n = \frac{Z^2 \cdot p \cdot (1-p)}{E^2} \quad \text{and} \quad n_{\text{adjusted}} = \frac{n}{1 + \frac{n-1}{N}}
+                \]
+            </div>
+
+            <div class="steps">
+                <h3>Step-by-Step Process:</h3>
+                <ol>
+                    <li>
+                        <strong>Initial Calculation:</strong>
+                        \[
+                        n = \frac{1.96^2 \cdot 0.5 \cdot 0.5}{0.05^2} = 384.16
+                        \]
+                    </li>
+                    <li>
+                        <strong>Population Adjustment:</strong>
+                        \[
+                        n_{\text{adjusted}} = \frac{384.16}{1 + \frac{383.16}{560,560}} \approx 384
+                        \]
+                    </li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Final Determination:</h3>
+                <p>We recommend a sample size of <span class="highlight">385 participants</span> to:</p>
+                <ul>
+                    <li>Maintain 95% confidence level</li>
+                    <li>Achieve ±5% margin of error</li>
+                    <li>Account for potential non-responses</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. Margin of Error Analysis (168 Responses)</h2>
+            <p>After collecting 168 responses, we re-evaluated the margin of error:</p>
+            
+            <div class="parameters">
+                <h3>Revised Parameters:</h3>
+                <ul>
+                    <li><strong>Collected Sample (n):</strong> 168</li>
+                    <li><strong>Population (N):</strong> 560,560</li>
+                    <li><strong>Confidence Level:</strong> 95%</li>
+                    <li><strong>Proportion (p):</strong> 0.5</li>
+                </ul>
+            </div>
+
+            <div class="formula">
+                <h3>Margin of Error Formula:</h3>
+                \[
+                E = Z \cdot \sqrt{\frac{p(1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}}
+                \]
+            </div>
+
+            <div class="steps">
+                <h3>Calculation Steps:</h3>
+                <ol>
+                    <li>
+                        <strong>Standard Error:</strong>
+                        \[
+                        \sqrt{\frac{0.5 \cdot 0.5}{168}} \approx 0.0395
+                        \]
+                    </li>
+                    <li>
+                        <strong>Correction Factor:</strong>
+                        \[
+                        \sqrt{\frac{560,560 - 168}{560,560 - 1}} \approx 0.99985
+                        \]
+                    </li>
+                    <li>
+                        <strong>Final Margin:</strong>
+                        \[
+                        E = 1.96 \cdot 0.0395 \cdot 0.99985 \approx \mathbf{7.74\%}
+                        \]
+                    </li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <h3>Implications of 168 Responses:</h3>
+                <ul>
+                    <li>Margin of Error: <span class="highlight">±7.74%</span> (vs original target of ±5%) this limit our reasearch power</li>
+                </ul>
+            </div>
+
+            <div class="recommendations">
+                <h3>Conclusion :</h3>
+                <ul>
+                    <li>We clearly acknowledge limitations in methodology due to lack of response</li>
+                    <li>If we could have get additional time to pursue additional data collection to reach target sample our research might be better</li>
+                    <li>Still we hope our research is the founding frame work for further studies due to it's unique approaches</li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="footer">
+            
+        </div>
+    </div>
+</body>
+</html>
